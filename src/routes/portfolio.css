@@ -1,0 +1,131 @@
+/* CSS minimalista para o portfólio de Micael Rocha */
+.portfolio {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2.5rem 1.5rem;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f9fafb;
+    color: #222;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    border: 1px solid #ececec;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 500;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.3rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+    color: #1a202c;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+h2 {
+    font-size: 1.25rem;
+    color: #4a5568;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+h3 {
+    font-size: 1.08rem;
+    color: #222;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid #e2e8f0;
+    padding-left: 0.7rem;
+    border-radius: 4px;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+.exp-item,
+.form-item {
+    margin-bottom: 1rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid #e2e8f0;
+    transition: box-shadow 0.2s;
+}
+
+.exp-item:hover,
+.form-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    background: #f1f5f9;
+}
+
+.exp-item:last-child,
+.form-item:last-child {
+    border-bottom: none;
+}
+
+.habilidades ul,
+.linguas ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.habilidades li,
+.linguas li {
+    background: linear-gradient(90deg, #e0e7ff 0%, #f7fafc 100%);
+    padding: 0.45rem 1.1rem;
+    border-radius: 18px;
+    font-size: 1rem;
+    color: #2d3748;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+}
+
+.habilidades li:hover,
+.linguas li:hover {
+    background: linear-gradient(90deg, #c7d2fe 0%, #e0e7ff 100%);
+    color: #1a202c;
+}
+
+.contato p {
+    margin: 0.3rem 0;
+    font-size: 1.02rem;
+    color: #4a5568;
+}
+
+@media (max-width: 600px) {
+    .portfolio {
+        padding: 0.7rem 0.1rem;
+        border-radius: 8px;
+        box-shadow: none;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 0.95rem;
+    }
+
+    .exp-item,
+    .form-item {
+        padding-bottom: 0.4rem;
+    }
+
+    .habilidades li,
+    .linguas li {
+        font-size: 0.95rem;
+        padding: 0.35rem 0.7rem;
+    }
+}
