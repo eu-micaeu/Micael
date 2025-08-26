@@ -1,13 +1,118 @@
 <script>
     import ThreeScene from "$lib/ThreeScene.svelte";
     import { onMount } from "svelte";
-    import user_roxo from '$lib/assets/user-roxo.svg';
+    import user_roxo from "$lib/assets/user-roxo.svg";
 
     // Sistema de tema
     let isDarkMode = false;
 
     // Menu mobile
     let isMenuOpen = false;
+
+    // Idioma
+    let language = "pt";
+
+    if (typeof window !== "undefined") {
+        const savedLang = window.localStorage.getItem("language");
+        if (savedLang) language = savedLang;
+    }
+
+    function toggleLanguage() {
+        language = language === "pt" ? "en" : "pt";
+        if (typeof window !== "undefined") {
+            window.localStorage.setItem("language", language);
+        }
+    }
+
+    // Traduções
+    const translations = {
+        pt: {
+            nav: {
+                about: "Sobre",
+                education: "Educação",
+                projects: "Projetos",
+                skills: "Tecnologias",
+                contact: "Contato",
+                theme: "Alterar tema",
+                lang: "Alterar idioma",
+            },
+            hero: {
+                btn: "Ver Projetos",
+            },
+            about: {
+                title: "Sobre",
+                experience: "Anos de Experiência",
+                projects: "Projetos Realizados",
+                techs: "Tecnologias",
+            },
+            education: {
+                title: "Educação",
+                highlights: [
+                    "Arquitetura de software e padrões de design",
+                    "Metodologias ágeis e gestão de projetos",
+                    "Tecnologias modernas de desenvolvimento",
+                ],
+            },
+            projects: {
+                title: "Projetos",
+                github: "Ver Projeto no GitHub →",
+                view: "Ver Projeto →",
+            },
+            skills: {
+                title: "Tecnologias",
+            },
+            contact: {
+                title: "Contato",
+                email: "✉",
+                phone: "📞",
+                github: "🔗 GitHub",
+                linkedin: "💼 LinkedIn",
+            },
+        },
+        en: {
+            nav: {
+                about: "About",
+                education: "Education",
+                projects: "Projects",
+                skills: "Technologies",
+                contact: "Contact",
+                theme: "Change theme",
+                lang: "Change language",
+            },
+            hero: {
+                btn: "See Projects",
+            },
+            about: {
+                title: "About",
+                experience: "Years of Experience",
+                projects: "Completed Projects",
+                techs: "Technologies",
+            },
+            education: {
+                title: "Education",
+                highlights: [
+                    "Software architecture and design patterns",
+                    "Agile methodologies and project management",
+                    "Modern development technologies",
+                ],
+            },
+            projects: {
+                title: "Projects",
+                github: "View Project on GitHub →",
+                view: "View Project →",
+            },
+            skills: {
+                title: "Technologies",
+            },
+            contact: {
+                title: "Contact",
+                email: "✉",
+                phone: "📞",
+                github: "🔗 GitHub",
+                linkedin: "💼 LinkedIn",
+            },
+        },
+    };
 
     function toggleTheme() {
         isDarkMode = !isDarkMode;
@@ -26,28 +131,96 @@
         isMenuOpen = false;
     }
 
-    // Dados de educação
-    const educacao = {
-        universidade: "UTFPR - Universidade Tecnológica Federal do Paraná",
-        curso: "Engenharia de Software",
-        periodo: "2022-1 até 2025-1",
-        duracao: "3 anos e meio",
-        status: "Concluído",
-        descricao:
-            "Bacharelado em Engenharia de Software com foco em desenvolvimento de sistemas, arquitetura de software, gestão de projetos e metodologias ágeis.",
+    // Dados de educação traduzidos
+    const educacaoData = {
+        pt: {
+            universidade: "UTFPR - Universidade Tecnológica Federal do Paraná",
+            curso: "Engenharia de Software",
+            periodo: "2022-1 até 2025-1",
+            duracao: "3 anos e meio",
+            status: "Concluído",
+            descricao:
+                "Bacharelado em Engenharia de Software com foco em desenvolvimento de sistemas, arquitetura de software, gestão de projetos e metodologias ágeis.",
+        },
+        en: {
+            universidade: "UTFPR - Federal University of Technology - Paraná",
+            curso: "Software Engineering",
+            periodo: "2022-1 to 2025-1",
+            duracao: "3.5 years",
+            status: "Completed",
+            descricao:
+                "Bachelor's degree in Software Engineering focused on systems development, software architecture, project management, and agile methodologies.",
+        },
     };
 
-    // Dados do portfólio
-    const nome = "Micael Rocha";
-    const titulo = "Engenheiro de Software | Desenvolvedor Full-Stack";
-    const descricaoCompleta =
-        "Sou um desenvolvedor full-stack apaixonado por tecnologia, com mais de 3 anos de experiência criando soluções inovadoras. Especializado em Go, JavaScript e tecnologias modernas.";
+    // Dados do portfólio traduzidos
+    const nomeData = {
+        pt: "Micael Rocha",
+        en: "Micael Rocha",
+    };
+    const tituloData = {
+        pt: "Engenheiro de Software | Desenvolvedor Full-Stack",
+        en: "Software Engineer | Full-Stack Developer",
+    };
+    const descricaoCompletaData = {
+        pt: "Sou um desenvolvedor full-stack apaixonado por tecnologia, com mais de 3 anos de experiência criando soluções inovadoras. Especializado em Go, JavaScript e tecnologias modernas.",
+        en: "I'm a passionate full-stack developer with over 3 years of experience creating innovative solutions. Specialized in Go, JavaScript, and modern technologies.",
+    };
+
+    // Status dos projetos traduzidos
+    const statusProjetos = {
+        pt: {
+            Produção: "Produção",
+            "Em desenvolvimento": "Em desenvolvimento",
+        },
+        en: {
+            Produção: "Production",
+            "Em desenvolvimento": "In development",
+        },
+    };
+
+    // Categorias de habilidades traduzidas
+    const skillsCategoriesData = {
+        pt: {
+            Linguagens: [
+                "Go",
+                "JavaScript",
+                "TypeScript",
+                "Python",
+                "Java",
+                "Lua",
+                "C#",
+            ],
+            Frontend: ["React", "Svelte", "Vue.js", "Angular"],
+            "Backend & APIs": ["GraphQL", "JSON"],
+            "Bancos de Dados": ["MongoDB", "Redis", "PostgreSQL", "MySQL"],
+            "DevOps & Cloud": ["Docker", "AWS", "Google Cloud", "Cloudflare"],
+            Ferramentas: ["Git", "GitHub", "Figma", "Astah", "Trello"],
+        },
+        en: {
+            Languages: [
+                "Go",
+                "JavaScript",
+                "TypeScript",
+                "Python",
+                "Java",
+                "Lua",
+                "C#",
+            ],
+            Frontend: ["React", "Svelte", "Vue.js", "Angular"],
+            "Backend & APIs": ["GraphQL", "JSON"],
+            Databases: ["MongoDB", "Redis", "PostgreSQL", "MySQL"],
+            "DevOps & Cloud": ["Docker", "AWS", "Google Cloud", "Cloudflare"],
+            Tools: ["Git", "GitHub", "Figma", "Astah", "Trello"],
+        },
+    };
 
     const projetos = [
         {
             nome: "SpeakUp",
             tecnologias: [
                 "Go",
+                "JavaScript",
                 "Svelte",
                 "MongoDB",
                 "Docker",
@@ -55,9 +228,12 @@
                 "Git",
                 "GitHub",
                 "Figma",
+                "JSON",
             ],
-            descricao:
-                "Uma plataforma que utiliza inteligência artificial para auxiliar no aprendizado de novos idiomas de maneira eficiente e personalizada.",
+            descricao: {
+                pt: "Uma plataforma que utiliza inteligência artificial para auxiliar no aprendizado de novos idiomas de maneira eficiente e personalizada.",
+                en: "A platform that uses artificial intelligence to help users learn new languages efficiently and in a personalized way.",
+            },
             status: "Produção",
             link: "https://speak-up.click",
         },
@@ -65,6 +241,7 @@
             nome: "PraticSports",
             tecnologias: [
                 "Go",
+                "JavaScript",
                 "React",
                 "PostgreSQL",
                 "Docker",
@@ -72,11 +249,54 @@
                 "Git",
                 "GitHub",
                 "Figma",
+                "JSON",
             ],
-            descricao:
-                "Aplicação para gestão de espaços esportivos, reservas, comandas, produtos e vendas.",
+            descricao: {
+                pt: "Aplicação para gestão de espaços esportivos, reservas, comandas, produtos e vendas.",
+                en: "Application for managing sports venues, reservations, orders, products, and sales.",
+            },
             status: "Produção",
             link: "https://praticsports.com",
+        },
+        {
+            nome: "Balancy",
+            tecnologias: [
+                "Go",
+                "JavaScript",
+                "React",
+                "PostgreSQL",
+                "Docker",
+                "Git",
+                "GitHub",
+                "Figma",
+                "JSON",
+            ],
+            descricao: {
+                pt: "Aplicação para o gerenciamento da quantidade de calorias que o usuário ingere e gasta ao longo do dia.",
+                en: "Application for managing the amount of calories the user consumes and burns throughout the day.",
+            },
+            status: "Em desenvolvimento",
+            link: "https://github.com/eu-micaeu/Balancy",
+        },
+        {
+            nome: "Foq",
+            tecnologias: [
+                "Go",
+                "JavaScript",
+                "React",
+                "PostgreSQL",
+                "Docker",
+                "Git",
+                "GitHub",
+                "Figma",
+                "JSON",
+            ],
+            descricao: {
+                pt: "Aplicação para o gerenciamento de tasks, um to-do list que ajuda o usuário a organizar suas atividades diárias.",
+                en: "Application for managing tasks, a to-do list that helps users organize their daily activities.",
+            },
+            status: "Em desenvolvimento",
+            link: "https://github.com/eu-micaeu/Foq",
         },
     ];
 
@@ -94,7 +314,7 @@
         "Backend & APIs": ["GraphQL", "JSON"],
         "Bancos de Dados": ["MongoDB", "Redis", "PostgreSQL", "MySQL"],
         "DevOps & Cloud": ["Docker", "AWS", "Google Cloud", "Cloudflare"],
-        Ferramentas: ["Git", "GitHub", "Figma"],
+        Ferramentas: ["Git", "GitHub", "Figma", "Astah", "Trello"],
     };
 
     // Lista flat de todas as habilidades para compatibilidade
@@ -129,6 +349,8 @@
         Git: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
         GitHub: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
         Figma: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+        Astah: "https://astah.net/wp-content/uploads/2019/07/Astah_blue.svg",
+        Trello: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-plain.svg",
         AWS: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
         "Google Cloud":
             "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
@@ -203,7 +425,6 @@
 <!-- Navegação -->
 <nav class="navbar">
     <div class="nav-container">
-        
         <h3>Portfolio | Curriculum Vitae</h3>
 
         <!-- Menu hambúrguer para mobile -->
@@ -223,43 +444,59 @@
             <li>
                 <button
                     on:click={() => scrollToSection("about")}
-                    class="nav-link">Sobre</button
+                    class="nav-link">{translations[language].nav.about}</button
                 >
             </li>
             <li>
                 <button
                     on:click={() => scrollToSection("education")}
-                    class="nav-link">Educação</button
+                    class="nav-link"
+                    >{translations[language].nav.education}</button
                 >
             </li>
             <li>
                 <button
                     on:click={() => scrollToSection("projects")}
-                    class="nav-link">Projetos</button
+                    class="nav-link"
+                    >{translations[language].nav.projects}</button
                 >
             </li>
             <li>
                 <button
                     on:click={() => scrollToSection("skills")}
-                    class="nav-link">Skills</button
+                    class="nav-link">{translations[language].nav.skills}</button
                 >
             </li>
             <li>
                 <button
                     on:click={() => scrollToSection("contact")}
-                    class="nav-link">Contato</button
+                    class="nav-link"
+                    >{translations[language].nav.contact}</button
                 >
             </li>
             <li>
                 <button
                     on:click={toggleTheme}
                     class="theme-toggle"
-                    aria-label="Alterar tema"
+                    aria-label={translations[language].nav.theme}
                 >
                     {#if isDarkMode}
                         ☀️
                     {:else}
                         🌙
+                    {/if}
+                </button>
+            </li>
+            <li>
+                <button
+                    on:click={toggleLanguage}
+                    class="lang-toggle"
+                    aria-label={translations[language].nav.lang}
+                >
+                    {#if language === "pt"}
+                        PT
+                    {:else}
+                        EN
                     {/if}
                 </button>
             </li>
@@ -270,14 +507,14 @@
 <!-- Seção Hero -->
 <section id="home" class="hero">
     <div class="hero-content animate-in">
-        <h1 class="hero-title">{nome}</h1>
-        <h2 class="hero-subtitle">{titulo}</h2>
+        <h1 class="hero-title">{nomeData[language]}</h1>
+        <h2 class="hero-subtitle">{tituloData[language]}</h2>
         <div class="hero-buttons">
             <button
                 on:click={() => scrollToSection("projects")}
                 class="btn btn-primary"
             >
-                Ver Projetos
+                {translations[language].hero.btn}
             </button>
         </div>
     </div>
@@ -287,23 +524,29 @@
 <section id="about" class="about">
     <div class="container">
         <div class="section-header animate-in">
-            <h2 class="section-title">Sobre</h2>
+            <h2 class="section-title">{translations[language].about.title}</h2>
             <div class="section-line"></div>
         </div>
         <div class="about-content animate-in">
-            <p class="about-text">{descricaoCompleta}</p>
+            <p class="about-text">{descricaoCompletaData[language]}</p>
             <div class="about-stats">
                 <div class="stat">
                     <span class="stat-number">3+</span>
-                    <span class="stat-label">Anos de Experiência</span>
+                    <span class="stat-label"
+                        >{translations[language].about.experience}</span
+                    >
                 </div>
                 <div class="stat">
                     <span class="stat-number">{projetos.length}</span>
-                    <span class="stat-label">Projetos Realizados</span>
+                    <span class="stat-label"
+                        >{translations[language].about.projects}</span
+                    >
                 </div>
                 <div class="stat">
                     <span class="stat-number">{habilidades.length}</span>
-                    <span class="stat-label">Tecnologias</span>
+                    <span class="stat-label"
+                        >{translations[language].about.techs}</span
+                    >
                 </div>
             </div>
         </div>
@@ -314,39 +557,43 @@
 <section id="education" class="education">
     <div class="container">
         <div class="section-header animate-in">
-            <h2 class="section-title">Educação</h2>
+            <h2 class="section-title">
+                {translations[language].education.title}
+            </h2>
             <div class="section-line"></div>
         </div>
         <div class="education-content animate-in">
             <div class="education-card">
                 <div class="education-header">
                     <div class="education-main">
-                        <h3 class="education-degree">{educacao.curso}</h3>
+                        <h3 class="education-degree">
+                            {educacaoData[language].curso}
+                        </h3>
                         <h4 class="education-institution">
-                            {educacao.universidade}
+                            {educacaoData[language].universidade}
                         </h4>
                     </div>
                     <div class="education-meta">
-                        <span class="education-period">{educacao.periodo}</span>
+                        <span class="education-period"
+                            >{educacaoData[language].periodo}</span
+                        >
                         <span class="education-duration"
-                            >({educacao.duracao})</span
+                            >({educacaoData[language].duracao})</span
                         >
                     </div>
                 </div>
-                <p class="education-description">{educacao.descricao}</p>
+                <p class="education-description">
+                    {educacaoData[language].descricao}
+                </p>
                 <div class="education-highlights">
-                    <div class="highlight-item">
-                        <span class="highlight-icon">🏗️</span>
-                        <span>Arquitetura de software e padrões de design</span>
-                    </div>
-                    <div class="highlight-item">
-                        <span class="highlight-icon">⚡</span>
-                        <span>Metodologias ágeis e gestão de projetos</span>
-                    </div>
-                    <div class="highlight-item">
-                        <span class="highlight-icon">🔧</span>
-                        <span>Tecnologias modernas de desenvolvimento</span>
-                    </div>
+                    {#each translations[language].education.highlights as highlight, i}
+                        <div class="highlight-item">
+                            <span class="highlight-icon"
+                                >{i === 0 ? "🏗️" : i === 1 ? "⚡" : "🔧"}</span
+                            >
+                            <span>{highlight}</span>
+                        </div>
+                    {/each}
                 </div>
             </div>
         </div>
@@ -357,15 +604,19 @@
 <section id="projects" class="projects">
     <div class="container">
         <div class="section-header animate-in">
-            <h2 class="section-title">Projetos</h2>
+            <h2 class="section-title">
+                {translations[language].projects.title}
+            </h2>
             <div class="section-line"></div>
         </div>
         <div class="projects-grid">
             {#each projetos as projeto}
                 <div class="project-card animate-in">
-                    <div class="project-status">{projeto.status}</div>
+                    <div class="project-status">
+                        {statusProjetos[language][projeto.status]}
+                    </div>
                     <h3 class="project-title">{projeto.nome}</h3>
-                    <p class="project-description">{projeto.descricao}</p>
+                    <p class="project-description">{projeto.descricao[language]}</p>
                     <div class="project-tech">
                         {#each projeto.tecnologias as tech}
                             <span class="tech-badge">{tech}</span>
@@ -377,7 +628,9 @@
                             target="_blank"
                             class="project-link"
                         >
-                            Ver Projeto →
+                            {projeto.link && projeto.link.includes("github.com")
+                                ? translations[language].projects.github
+                                : translations[language].projects.view}
                         </a>
                     </div>
                 </div>
@@ -390,11 +643,11 @@
 <section id="skills" class="skills">
     <div class="container">
         <div class="section-header animate-in">
-            <h2 class="section-title">Skills</h2>
+            <h2 class="section-title">{translations[language].skills.title}</h2>
             <div class="section-line"></div>
         </div>
 
-        {#each Object.entries(skillsCategories) as [categoria, skills]}
+        {#each Object.entries(skillsCategoriesData[language]) as [categoria, skills]}
             <div class="skills-category animate-in">
                 <h3 class="category-title">{categoria}</h3>
                 <div class="skills-grid">
@@ -419,26 +672,40 @@
 <section id="contact" class="contact">
     <div class="container">
         <div class="section-header animate-in">
-            <h2 class="section-title">Contato</h2>
+            <h2 class="section-title">
+                {translations[language].contact.title}
+            </h2>
             <div class="section-line"></div>
         </div>
         <div class="contact-content animate-in">
             <div class="contact-links contact-links-column">
                 <a href="mailto:{contato.email}" class="contact-link">
-                    <span class="contact-icon">✉</span>
+                    <span class="contact-icon"
+                        >{translations[language].contact.email}</span
+                    >
                     {contato.email}
                 </a>
                 <a href="tel:{contato.telefone}" class="contact-link">
-                    <span class="contact-icon">📞</span>
+                    <span class="contact-icon"
+                        >{translations[language].contact.phone}</span
+                    >
                     {contato.telefone}
                 </a>
                 <a href={contato.github} target="_blank" class="contact-link">
-                    <span class="contact-icon">🔗</span>
-                    GitHub
+                    <span class="contact-icon"
+                        >{translations[language].contact.github.split(
+                            " ",
+                        )[0]}</span
+                    >
+                    {translations[language].contact.github.split(" ")[1]}
                 </a>
                 <a href={contato.linkedin} target="_blank" class="contact-link">
-                    <span class="contact-icon">💼</span>
-                    LinkedIn
+                    <span class="contact-icon"
+                        >{translations[language].contact.linkedin.split(
+                            " ",
+                        )[0]}</span
+                    >
+                    {translations[language].contact.linkedin.split(" ")[1]}
                 </a>
             </div>
         </div>
