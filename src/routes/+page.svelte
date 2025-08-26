@@ -5,6 +5,9 @@
     // Sistema de tema
     let isDarkMode = false;
 
+    // Menu mobile
+    let isMenuOpen = false;
+
     function toggleTheme() {
         isDarkMode = !isDarkMode;
         document.documentElement.setAttribute(
@@ -12,6 +15,14 @@
             isDarkMode ? "dark" : "light",
         );
         localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    }
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    function closeMenu() {
+        isMenuOpen = false;
     }
 
     // Dados do portfólio
@@ -57,7 +68,11 @@
         "PostgreSQL",
         "MySQL",
         "Git",
+        "GitHub",
         "Figma",
+        "AWS",
+        "Google Cloud",
+        "Cloudflare",
     ];
 
     // Logos das tecnologias usando CDN do devicons
@@ -83,7 +98,13 @@
             "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
         MySQL: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
         Git: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+        GitHub: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
         Figma: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+        AWS: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+        "Google Cloud":
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
+        Cloudflare:
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg",
     };
 
     const contato = {
@@ -98,6 +119,7 @@
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
+            closeMenu(); // Fecha o menu ao navegar
         }
     }
 
@@ -151,8 +173,22 @@
 <!-- Navegação -->
 <nav class="navbar">
     <div class="nav-container">
-        <div class="nav-brand">Micael Rocha</div>
-        <ul class="nav-menu">
+        <div class="nav-brand">Micael R.</div>
+
+        <!-- Menu hambúrguer para mobile -->
+        <button
+            on:click={toggleMenu}
+            class="nav-toggle"
+            class:active={isMenuOpen}
+            aria-label="Menu"
+            aria-expanded={isMenuOpen}
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" class:active={isMenuOpen}>
             <li>
                 <button
                     on:click={() => scrollToSection("home")}
@@ -213,12 +249,6 @@
             >
                 Ver Projetos
             </button>
-            <button
-                on:click={() => scrollToSection("contact")}
-                class="btn btn-secondary"
-            >
-                Fale Comigo
-            </button>
         </div>
     </div>
 </section>
@@ -227,7 +257,7 @@
 <section id="about" class="about">
     <div class="container">
         <div class="section-header animate-in">
-            <h2 class="section-title">Sobre Mim</h2>
+            <h2 class="section-title">Sobre</h2>
             <div class="section-line"></div>
         </div>
         <div class="about-content animate-in">
