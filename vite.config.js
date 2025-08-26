@@ -7,8 +7,7 @@ export default defineConfig({
 		host: true, // permite acesso externo
 		port: 5173, // você pode ajustar a porta se quiser
 		allowedHosts: [
-			'micaelrocha.com',
-			'www.micaelrocha.com'
+			'all'
 		]
 	}
 });

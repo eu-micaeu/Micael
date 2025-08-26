@@ -16,5 +16,4 @@ COPY . .
 # Expor a porta (Vite usa 5173 por padrão)
 EXPOSE 5173
 
-# Rodar o servidor de dev (sem --open porque container não tem navegador)
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["npm", "run", "dev"]
