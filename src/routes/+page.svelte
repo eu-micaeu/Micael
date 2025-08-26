@@ -191,8 +191,9 @@
                 "Lua",
                 "C#",
             ],
-            Frontend: ["React", "Svelte", "Vue.js", "Angular"],
-            "Backend & APIs": ["GraphQL", "JSON"],
+            "Frameworks de Frontend": ["React", "Svelte", "Vue.js", "Angular"],
+            "Frameworks de Backend": ["Express", "Gin", "Spring Boot"],
+            "APIs": ["GraphQL", "JSON"],
             "Bancos de Dados": ["MongoDB", "Redis", "PostgreSQL", "MySQL"],
             "DevOps & Cloud": ["Docker", "AWS", "Google Cloud", "Cloudflare"],
             Ferramentas: ["Git", "GitHub", "Figma", "Astah", "Trello"],
@@ -207,8 +208,9 @@
                 "Lua",
                 "C#",
             ],
-            Frontend: ["React", "Svelte", "Vue.js", "Angular"],
-            "Backend & APIs": ["GraphQL", "JSON"],
+            "Frontend Frameworks": ["React", "Svelte", "Vue.js", "Angular"],
+            "Backend Frameworks": ["Express", "Gin", "Spring Boot"],
+            "APIs": ["GraphQL", "JSON"],
             Databases: ["MongoDB", "Redis", "PostgreSQL", "MySQL"],
             "DevOps & Cloud": ["Docker", "AWS", "Google Cloud", "Cloudflare"],
             Tools: ["Git", "GitHub", "Figma", "Astah", "Trello"],
@@ -310,8 +312,9 @@
             "Lua",
             "C#",
         ],
-        Frontend: ["React", "Svelte", "Vue.js", "Angular"],
-        "Backend & APIs": ["GraphQL", "JSON"],
+        "Frameworks de Frontend": ["React", "Svelte", "Vue.js", "Angular"],
+        "Frameworks de Backend": ["Express", "Gin", "Spring Boot"],
+        "APIs": ["GraphQL", "JSON"],
         "Bancos de Dados": ["MongoDB", "Redis", "PostgreSQL", "MySQL"],
         "DevOps & Cloud": ["Docker", "AWS", "Google Cloud", "Cloudflare"],
         Ferramentas: ["Git", "GitHub", "Figma", "Astah", "Trello"],
@@ -357,6 +360,11 @@
         Cloudflare:
             "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg",
         JSON: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg",
+        Express:
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+        Gin: "https://gin-gonic.com/_astro/gin.D6H2T_2v_ZD2G7l.webp",
+        "Spring Boot":
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
     };
 
     const contato = {
@@ -425,7 +433,7 @@
 <!-- Navegação -->
 <nav class="navbar">
     <div class="nav-container">
-        <h3>Portfolio | Curriculum Vitae</h3>
+        <h3>Portfolio</h3>
 
         <!-- Menu hambúrguer para mobile -->
         <button
@@ -616,7 +624,9 @@
                         {statusProjetos[language][projeto.status]}
                     </div>
                     <h3 class="project-title">{projeto.nome}</h3>
-                    <p class="project-description">{projeto.descricao[language]}</p>
+                    <p class="project-description">
+                        {projeto.descricao[language]}
+                    </p>
                     <div class="project-tech">
                         {#each projeto.tecnologias as tech}
                             <span class="tech-badge">{tech}</span>
