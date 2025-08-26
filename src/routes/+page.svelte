@@ -39,9 +39,7 @@
 
     // Dados do portfólio
     const nome = "Micael Rocha";
-    const titulo = "Desenvolvedor Full-Stack";
-    const resumo =
-        "Criando experiências digitais incríveis com tecnologias modernas";
+    const titulo = "Engenheiro de Software | Desenvolvedor Full-Stack";
     const descricaoCompleta =
         "Sou um desenvolvedor full-stack apaixonado por tecnologia, com mais de 3 anos de experiência criando soluções inovadoras. Especializado em Go, JavaScript e tecnologias modernas.";
 
@@ -206,7 +204,7 @@
 <nav class="navbar">
     <div class="nav-container">
         
-        <img src={user_roxo} alt="Avatar de usuário roxo" style="width: 40px;" />
+        <h3>Portfolio | Curriculum Vitae</h3>
 
         <!-- Menu hambúrguer para mobile -->
         <button
@@ -274,7 +272,6 @@
     <div class="hero-content animate-in">
         <h1 class="hero-title">{nome}</h1>
         <h2 class="hero-subtitle">{titulo}</h2>
-        <p class="hero-description">{resumo}</p>
         <div class="hero-buttons">
             <button
                 on:click={() => scrollToSection("projects")}

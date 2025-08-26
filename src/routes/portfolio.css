@@ -144,26 +144,60 @@ body {
 .hero-title {
     font-size: 4rem;
     font-weight: 800;
-    color: var(--text-primary);
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    background-size: 200% 200%;
+    /* dá espaço para o movimento */
+    background-position: 0% 50%;
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
 }
 
 .hero-subtitle {
-    font-size: 2rem;
-    font-weight: 300;
+    font-weight: 800;
     color: var(--text-accent);
     margin-bottom: 1.5rem;
+    width: 100%;
+    text-align: center;
 }
 
-.hero-description {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    margin-bottom: 3rem;
-    line-height: 1.8;
+@media (max-width: 479px) {
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-subtitle {
+        font-size: 1.6rem;
+        margin-bottom: 1.3rem;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .hero-subtitle {
+        font-size: 1.7em;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-subtitle {
+        font-size: 1.8em;
+        margin-bottom: 2rem;
+    }
 }
 
 .hero-buttons {
@@ -739,24 +773,12 @@ section {
 
     .hero {
         padding: 0 1rem;
-        min-height: 90vh;
     }
 
     .hero-title {
         font-size: 2rem;
         line-height: 1.2;
         margin-bottom: 0.8rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .hero-description {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-        padding: 0 0.5rem;
     }
 
     .hero-buttons {
@@ -945,14 +967,6 @@ section {
         line-height: 1.2;
     }
 
-    .hero-subtitle {
-        font-size: 1.4rem;
-    }
-
-    .hero-description {
-        font-size: 1.1rem;
-    }
-
     .hero-buttons {
         flex-direction: row;
         gap: 1rem;
@@ -1049,10 +1063,6 @@ section {
         font-size: 3.2rem;
     }
 
-    .hero-subtitle {
-        font-size: 1.6rem;
-    }
-
     .hero-buttons {
         gap: 1.2rem;
     }
@@ -1119,11 +1129,6 @@ section {
         font-size: 3.6rem;
     }
 
-    .hero-subtitle {
-        font-size: 1.8rem;
-    }
-
-
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2.5rem;
@@ -1174,14 +1179,6 @@ section {
 
     .hero-title {
         font-size: 4.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 2.2rem;
-    }
-
-    .hero-description {
-        font-size: 1.3rem;
     }
 
     .section-title {
@@ -1250,16 +1247,6 @@ section {
     .hero-title {
         font-size: 5.5rem;
         line-height: 1.1;
-    }
-
-    .hero-subtitle {
-        font-size: 2.5rem;
-    }
-
-    .hero-description {
-        font-size: 1.4rem;
-        max-width: 900px;
-        margin: 0 auto 3rem;
     }
 
     .btn {
@@ -1375,14 +1362,6 @@ section {
         font-size: 2.2rem;
     }
 
-    .hero-subtitle {
-        font-size: 1.3rem;
-    }
-
-    .hero-description {
-        margin-bottom: 2rem;
-    }
-
     section {
         padding: 4rem 0;
     }
@@ -1397,7 +1376,6 @@ section {
     }
 }
 
-/* Reduzir animações para usuários que preferem movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;

@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import * as THREE from "three";
+    import { radians } from "three/tsl";
 
     let container;
     let scene, camera, renderer, particles;
@@ -57,27 +58,67 @@
 
     function createParticleSystem() {
         const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 800;
+        const particlesCount = 500;
         const posArray = new Float32Array(particlesCount * 3);
+        const colorArray = new Float32Array(particlesCount * 3);
 
-        for (let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 30;
+        // Cores: metade original, metade verde
+        const color1 = new THREE.Color(0x9f5cff); // original
+        const color2 = new THREE.Color(0x15ff00); // verde
+
+        for (let i = 0; i < particlesCount; i++) {
+            posArray[i * 3] = (Math.random() - 0.5) * 30;
+            posArray[i * 3 + 1] = (Math.random() - 0.5) * 30;
+            posArray[i * 3 + 2] = (Math.random() - 0.5) * 30;
+
+            const color = i < particlesCount / 2 ? color1 : color2;
+            colorArray[i * 3] = color.r;
+            colorArray[i * 3 + 1] = color.g;
+            colorArray[i * 3 + 2] = color.b;
         }
 
         particlesGeometry.setAttribute(
             "position",
             new THREE.BufferAttribute(posArray, 3),
         );
+        particlesGeometry.setAttribute(
+            "color",
+            new THREE.BufferAttribute(colorArray, 3),
+        );
 
         const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.03,
-            color: 0x667eea,
+            size: 0.07,
+            vertexColors: true,
             transparent: true,
-            opacity: 0.4,
+            opacity: 0.85,
+            map: createCircleTexture(),
+            alphaTest: 0.5,
         });
 
         particles = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particles);
+    }
+
+    function createCircleTexture() {
+        const size = 64;
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+
+        const ctx = canvas.getContext("2d");
+
+        // fundo transparente
+        ctx.clearRect(0, 0, size, size);
+
+        // círculo branco
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        const texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        return texture;
     }
 
     function onMouseMove(event) {
