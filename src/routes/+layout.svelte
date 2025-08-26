@@ -6,7 +6,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>Curriculum Vitae - Micael</title>
+	<title>Portfolio  - Micael</title>
 </svelte:head>
 
 {@render children?.()}

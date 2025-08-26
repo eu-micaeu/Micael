@@ -1,6 +1,7 @@
 <script>
     import ThreeScene from "$lib/ThreeScene.svelte";
     import { onMount } from "svelte";
+    import user_roxo from '$lib/assets/user-roxo.svg';
 
     // Sistema de tema
     let isDarkMode = false;
@@ -27,7 +28,7 @@
 
     // Dados de educação
     const educacao = {
-        universidade: "UTFPR",
+        universidade: "UTFPR - Universidade Tecnológica Federal do Paraná",
         curso: "Engenharia de Software",
         periodo: "2022-1 até 2025-1",
         duracao: "3 anos e meio",
@@ -91,8 +92,8 @@
             "Lua",
             "C#",
         ],
-        Frontend: ["React", "Svelte", "Vue.js"],
-        "Backend & APIs": ["GraphQL"],
+        Frontend: ["React", "Svelte", "Vue.js", "Angular"],
+        "Backend & APIs": ["GraphQL", "JSON"],
         "Bancos de Dados": ["MongoDB", "Redis", "PostgreSQL", "MySQL"],
         "DevOps & Cloud": ["Docker", "AWS", "Google Cloud", "Cloudflare"],
         Ferramentas: ["Git", "GitHub", "Figma"],
@@ -117,6 +118,8 @@
         "Vue.js":
             "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
         Docker: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+        Angular:
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
         GraphQL:
             "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
         MongoDB:
@@ -133,6 +136,7 @@
             "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
         Cloudflare:
             "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg",
+        JSON: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg",
     };
 
     const contato = {
@@ -201,7 +205,8 @@
 <!-- Navegação -->
 <nav class="navbar">
     <div class="nav-container">
-        <div class="nav-brand">Micael R.</div>
+        
+        <img src={user_roxo} alt="Avatar de usuário roxo" style="width: 40px;" />
 
         <!-- Menu hambúrguer para mobile -->
         <button
@@ -421,7 +426,7 @@
             <div class="section-line"></div>
         </div>
         <div class="contact-content animate-in">
-            <div class="contact-links">
+            <div class="contact-links contact-links-column">
                 <a href="mailto:{contato.email}" class="contact-link">
                     <span class="contact-icon">✉</span>
                     {contato.email}
