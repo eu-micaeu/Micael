@@ -7,7 +7,12 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''"
+		"prepare": "svelte-kit sync || echo ''",
+		"docker:build": "docker build -t micael-portfolio .",
+		"docker:run": "docker run -p 3000:4173 micael-portfolio",
+		"docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+		"docker:prod": "docker-compose up --build",
+		"docker:stop": "docker-compose down"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.0",
