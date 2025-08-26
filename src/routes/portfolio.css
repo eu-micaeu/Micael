@@ -287,6 +287,111 @@ section {
     font-weight: 500;
 }
 
+.education {
+    padding: 6rem 0;
+}
+
+.education-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px var(--shadow);
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.education-main h3.education-degree {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.education-main h4.education-institution {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-accent);
+}
+
+.education-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.education-period {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.education-duration {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.education-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.education-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease;
+}
+
+.highlight-item:hover {
+    transform: translateX(5px);
+}
+
+.highlight-icon {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.highlight-item span:last-child {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -697,6 +802,58 @@ section {
         margin-bottom: 1rem;
     }
 
+    /* Educação - Mobile Pequeno */
+    .education-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .education-meta {
+        text-align: left;
+    }
+
+    .education-main h3.education-degree {
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .education-main h4.education-institution {
+        font-size: 1.1rem;
+    }
+
+    .education-period {
+        font-size: 1rem;
+    }
+
+    .education-duration {
+        font-size: 0.85rem;
+    }
+
+    .education-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .education-highlights {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .highlight-item {
+        padding: 0.8rem;
+        gap: 0.6rem;
+    }
+
+    .highlight-item span:last-child {
+        font-size: 0.9rem;
+    }
+
     .skills-grid {
         gap: 0.8rem;
         justify-content: center;
@@ -817,6 +974,34 @@ section {
         margin-bottom: 1.2rem;
     }
 
+    /* Educação - Mobile Médio */
+    .education-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .education-meta {
+        text-align: left;
+        margin-top: 1rem;
+    }
+
+    .education-main h3.education-degree {
+        font-size: 1.6rem;
+    }
+
+    .education-main h4.education-institution {
+        font-size: 1.2rem;
+    }
+
+    .education-highlights {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
     .skills-grid {
         gap: 1rem;
         justify-content: center;
@@ -875,6 +1060,21 @@ section {
 
     .project-card {
         padding: 1.8rem;
+    }
+
+    /* Educação - Tablet */
+    .education-card {
+        padding: 2.5rem;
+    }
+
+    .education-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .education-highlights {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
     }
 
     .skills-grid {

@@ -25,6 +25,17 @@
         isMenuOpen = false;
     }
 
+    // Dados de educação
+    const educacao = {
+        universidade: "UTFPR",
+        curso: "Engenharia de Software",
+        periodo: "2022-1 até 2025-1",
+        duracao: "3 anos e meio",
+        status: "Concluído",
+        descricao:
+            "Bacharelado em Engenharia de Software com foco em desenvolvimento de sistemas, arquitetura de software, gestão de projetos e metodologias ágeis.",
+    };
+
     // Dados do portfólio
     const nome = "Micael Rocha";
     const titulo = "Desenvolvedor Full-Stack";
@@ -36,7 +47,16 @@
     const projetos = [
         {
             nome: "SpeakUp",
-            tecnologias: ["Go", "Svelte", "MongoDB", "Docker", "Cloudflare", "Git", "GitHub", "Figma"],
+            tecnologias: [
+                "Go",
+                "Svelte",
+                "MongoDB",
+                "Docker",
+                "Cloudflare",
+                "Git",
+                "GitHub",
+                "Figma",
+            ],
             descricao:
                 "Uma plataforma que utiliza inteligência artificial para auxiliar no aprendizado de novos idiomas de maneira eficiente e personalizada.",
             status: "Produção",
@@ -44,7 +64,16 @@
         },
         {
             nome: "PraticSports",
-            tecnologias: ["Go", "React", "PostgreSQL", "Docker", "Cloudflare", "Git", "GitHub", "Figma"],
+            tecnologias: [
+                "Go",
+                "React",
+                "PostgreSQL",
+                "Docker",
+                "Cloudflare",
+                "Git",
+                "GitHub",
+                "Figma",
+            ],
             descricao:
                 "Aplicação para gestão de espaços esportivos, reservas, comandas, produtos e vendas.",
             status: "Produção",
@@ -190,14 +219,14 @@
         <ul class="nav-menu" class:active={isMenuOpen}>
             <li>
                 <button
-                    on:click={() => scrollToSection("home")}
-                    class="nav-link">Home</button
+                    on:click={() => scrollToSection("about")}
+                    class="nav-link">Sobre</button
                 >
             </li>
             <li>
                 <button
-                    on:click={() => scrollToSection("about")}
-                    class="nav-link">Sobre</button
+                    on:click={() => scrollToSection("education")}
+                    class="nav-link">Educação</button
                 >
             </li>
             <li>
@@ -273,6 +302,49 @@
                 <div class="stat">
                     <span class="stat-number">{habilidades.length}</span>
                     <span class="stat-label">Tecnologias</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seção Educação -->
+<section id="education" class="education">
+    <div class="container">
+        <div class="section-header animate-in">
+            <h2 class="section-title">Educação</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="education-content animate-in">
+            <div class="education-card">
+                <div class="education-header">
+                    <div class="education-main">
+                        <h3 class="education-degree">{educacao.curso}</h3>
+                        <h4 class="education-institution">
+                            {educacao.universidade}
+                        </h4>
+                    </div>
+                    <div class="education-meta">
+                        <span class="education-period">{educacao.periodo}</span>
+                        <span class="education-duration"
+                            >({educacao.duracao})</span
+                        >
+                    </div>
+                </div>
+                <p class="education-description">{educacao.descricao}</p>
+                <div class="education-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🏗️</span>
+                        <span>Arquitetura de software e padrões de design</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">⚡</span>
+                        <span>Metodologias ágeis e gestão de projetos</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🔧</span>
+                        <span>Tecnologias modernas de desenvolvimento</span>
+                    </div>
                 </div>
             </div>
         </div>
