@@ -36,7 +36,7 @@
     const projetos = [
         {
             nome: "SpeakUp",
-            tecnologias: ["Go", "MongoDB", "Docker", "Svelte"],
+            tecnologias: ["Go", "Svelte", "MongoDB", "Docker", "Cloudflare", "Git", "GitHub", "Figma"],
             descricao:
                 "Uma plataforma que utiliza inteligência artificial para auxiliar no aprendizado de novos idiomas de maneira eficiente e personalizada.",
             status: "Produção",
@@ -44,36 +44,33 @@
         },
         {
             nome: "PraticSports",
-            tecnologias: ["Go", "React", "GraphQL", "MongoDB"],
+            tecnologias: ["Go", "React", "PostgreSQL", "Docker", "Cloudflare", "Git", "GitHub", "Figma"],
             descricao:
                 "Aplicação para gestão de espaços esportivos, reservas, comandas, produtos e vendas.",
-            status: "Em desenvolvimento",
+            status: "Produção",
             link: "https://praticsports.com",
         },
     ];
 
-    const habilidades = [
-        "Go",
-        "JavaScript",
-        "TypeScript",
-        "Python",
-        "Java",
-        "React",
-        "Svelte",
-        "Vue.js",
-        "Docker",
-        "GraphQL",
-        "MongoDB",
-        "Redis",
-        "PostgreSQL",
-        "MySQL",
-        "Git",
-        "GitHub",
-        "Figma",
-        "AWS",
-        "Google Cloud",
-        "Cloudflare",
-    ];
+    const skillsCategories = {
+        Linguagens: [
+            "Go",
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "Java",
+            "Lua",
+            "C#",
+        ],
+        Frontend: ["React", "Svelte", "Vue.js"],
+        "Backend & APIs": ["GraphQL"],
+        "Bancos de Dados": ["MongoDB", "Redis", "PostgreSQL", "MySQL"],
+        "DevOps & Cloud": ["Docker", "AWS", "Google Cloud", "Cloudflare"],
+        Ferramentas: ["Git", "GitHub", "Figma"],
+    };
+
+    // Lista flat de todas as habilidades para compatibilidade
+    const habilidades = Object.values(skillsCategories).flat();
 
     // Logos das tecnologias usando CDN do devicons
     const techLogos = {
@@ -84,6 +81,8 @@
             "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
         Python: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
         Java: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        Lua: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/lua/lua-original.svg",
+        "C#": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
         React: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
         Svelte: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/svelte/svelte-original.svg",
         "Vue.js":
@@ -320,19 +319,25 @@
             <h2 class="section-title">Skills</h2>
             <div class="section-line"></div>
         </div>
-        <div class="skills-grid animate-in">
-            {#each habilidades as skill}
-                <div class="skill-item">
-                    <img
-                        src={techLogos[skill]}
-                        alt={skill}
-                        class="skill-icon"
-                        loading="lazy"
-                    />
-                    <span class="skill-name">{skill}</span>
+
+        {#each Object.entries(skillsCategories) as [categoria, skills]}
+            <div class="skills-category animate-in">
+                <h3 class="category-title">{categoria}</h3>
+                <div class="skills-grid">
+                    {#each skills as skill}
+                        <div class="skill-item">
+                            <img
+                                src={techLogos[skill]}
+                                alt={skill}
+                                class="skill-icon"
+                                loading="lazy"
+                            />
+                            <span class="skill-name">{skill}</span>
+                        </div>
+                    {/each}
                 </div>
-            {/each}
-        </div>
+            </div>
+        {/each}
     </div>
 </section>
 
