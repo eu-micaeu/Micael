@@ -1,11 +1,36 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Micael Rocha - Portfólio</title>
+	<meta name="description" content="Site oficial de Micael Rocha. Portfólio, projetos e informações profissionais." />
+	<meta name="keywords" content="Micael Rocha, portfólio, desenvolvedor, projetos, tecnologia" />
+	<meta name="author" content="Micael Rocha" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Micael Rocha - Desenvolvedor Full-Stack" />
+	<meta property="og:description"
+		content="Portfólio de Micael Rocha, Engenheiro de Software e Desenvolvedor Full-Stack especializado em Go, JavaScript e tecnologias modernas." />
+	<meta property="og:image" content="https://micaelrocha.com/images/preview.png" />
+	<meta property="og:url" content="https://micaelrocha.com" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="627" />
+
+	<!-- Twitter Card (opcional, mas ajuda em outros lugares) -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Micael Rocha - Desenvolvedor Full-Stack" />
+	<meta name="twitter:description"
+		content="Portfólio de Micael Rocha, Engenheiro de Software e Desenvolvedor Full-Stack especializado em Go, JavaScript e tecnologias modernas." />
+	<meta name="twitter:image" content="https://micaelrocha.com/images/preview.png" />
+
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>
